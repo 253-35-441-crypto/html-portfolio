@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <title>Apa Apnar Mon balo to</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background: linear-gradient(to right, #74ebd5, #9face6);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .box {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.2);
+        }
+        button {
+            padding: 12px 25px;
+            font-size: 18px;
+            border: none;
+            border-radius: 10px;
+            background: #ff7b54;
+            color: white;
+            cursor: pointer;
+        }
+        button:hover { background: #ff5722; }
+        #message {
+            margin-top: 20px;
+            font-size: 22px;
+            color: green;
+            display: none;
+        }
+        #joke {
+            margin-top: 15px;
+            font-size: 18px;
+            color: #333;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<div class="box">
+    <h2>Click koren Apa😊</h2>
+    <button onclick="showMessage()">Click Here </button>
+    <p id="message">Apnar mon ta bhalo ache to apa? 💛 Na balo thakle akta jok sunen</p>
+    <p id="joke"></p>
+</div>
+<script>
+function showMessage() {
+    document.getElementById("message").style.display = "block";
+    document.getElementById("joke").style.display = "block";
+
+    let jokes = [
+        
+        "Teacher: homework koi? Student: Sir, homework amake khuje pay nai 😂",
+        
+    ];
+
+    let random = Math.floor(Math.random() * jokes.length);
+    document.getElementById("joke").innerText = jokes[random];
+}
+</script>
+</body>
+</html>
