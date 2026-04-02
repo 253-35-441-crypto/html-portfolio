@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Love Music Magic</title>
+
+<style>
+body {
+    margin: 0;
+    overflow: hidden;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Arial;
+    transition: 0.2s;
+}
+
+/* Center text */
+h1 {
+    color: white;
+    font-size: 50px;
+    text-shadow: 0 0 20px black;
+    z-index: 10;
+}
+.box {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.2);
+}
+button {
+            padding: 12px 25px;
+            font-size: 18px;
+            border: none;
+            border-radius: 10px;
+            background: #ff7b54;
+            color: white;
+            cursor: pointer;
+        }
+        button:hover { background: #ff5722; }
+        #message {
+            margin-top: 20px;
+            font-size: 22px;
+            color: green;
+            display: none;
+
+/* floating love */
+.love {
+    position: absolute;
+    color: red;
+    font-size: 30px;
+    animation: floatUp 2s linear forwards;
+}
+
+@keyframes floatUp {
+    0% { transform: translateY(0); opacity: 1; }
+    100% { transform: translateY(-200px); opacity: 0; }
+}
+</style>
+</head>
+
+<body>
+
+<h1>💖 Click Anywhere 💖</h1>
+
+<!-- Music file (replace your song here) -->
+<audio id="music" loop>
+    <source src="music.mp3" type="audio/mp3">
+</audio>
+
+<script>
+let audio = document.getElementById("music");
+
+// start music on click (browser allow)
+document.body.addEventListener("click", function(e){
+
+    audio.play();
+
+    // create LOVE text
+    let love = document.createElement("div");
+    love.classList.add("love");
+    love.innerHTML = "LOVE ❤️";
+
+    love.style.left = e.clientX + "px";
+    love.style.top = e.clientY + "px";
+
+    document.body.appendChild(love);
+
+    setTimeout(()=> {
+        love.remove();
+    }, 2000);
+});
+
+// 🎨 background color change with music beat (simple random effect)
+setInterval(()=>{
+    let r = Math.floor(Math.random()*255);
+    let g = Math.floor(Math.random()*255);
+    let b = Math.floor(Math.random()*255);
+
+    document.body.style.background = `rgb(${r},${g},${b})`;
+}, 400);
+
+</script>
+
+</body>
+</html>
